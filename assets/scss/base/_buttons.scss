@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  gap: 1rem;
+
+  padding: var(--padding, 1rem 2.4rem);
+  color: var(--clr-content);
+  background-color: var(--clr-bg);
+  box-shadow: var(--border);
+
+  cursor: pointer;
+  transition: all ease-in 0.2s;
+
+  &--primary {
+    --clr-bg: var(--clr-primary);
+    --clr-content: var(--clr-neutral--1);
+    --clr-border: var(--clr-primary);
+    --border-w: 0.1rem;
+    --border: 0 0 0 var(--border-w) var(--clr-border);
+
+    &:hover {
+      --clr-bg: var(--clr-neutral--1);
+      --clr-content: var(--clr-primary);
+      --clr-border: var(--clr-primary);
+    }
+  }
+}
