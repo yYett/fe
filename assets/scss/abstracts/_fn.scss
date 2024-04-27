@@ -1,0 +1,14 @@
+@use "sass:math";
+
+@function fluid-type($min, $max, $min-vw: 37.5rem, $max-vw: 117rem) {
+  $factor: math.div(1, ($max-vw - $min-vw)) * ($max - $min);
+  $calc-value: unquote(
+    "#{ $min - ($min-vw * $factor) } + #{ 100vw * $factor }"
+  );
+
+  @return clamp(
+    #{if($min > $max, $max, $min)},
+    #{$calc-value},
+    #{if($min > $max, $min, $max)}
+  );
+}

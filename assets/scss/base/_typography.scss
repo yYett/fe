@@ -1,0 +1,34 @@
+@use "../abstracts/fn" as *;
+
+$_typography_schema: (
+  headline: (
+    font_size: fluid-type(3rem, 2rem),
+    line_height: 150%,
+    font_weight: var(--font-w, 600),
+  ),
+  subtitle: (
+    font_size: fluid-type(1.8rem, 1.6rem),
+    line_height: 120%,
+    font_weight: var(--font-w),
+  ),
+  label: (
+    font_size: 1.4rem,
+    line_height: 120%,
+    font_weight: var(--font-w),
+  ),
+  caption: (
+    font_size: 1.2rem,
+    line_height: 120%,
+    font_weight: var(--font-w, 300),
+  ),
+);
+
+@each $name, $schema in $_typography_schema {
+  .f-#{$name} {
+    font-family: var(--font-family);
+    font-size: map-get($schema, "font_size");
+    line-height: map-get($schema, "line_height");
+    font-weight: map-get($schema, "font_weight");
+    color: var(--clr-text);
+  }
+}

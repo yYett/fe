@@ -1,11 +1,13 @@
 .btn {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 
   padding: var(--padding, 1rem 2.4rem);
   color: var(--clr-content);
   background-color: var(--clr-bg);
   box-shadow: var(--border);
+  border-radius: var(--border-r);
 
   cursor: pointer;
   transition: all ease-in 0.2s;
@@ -15,12 +17,23 @@
     --clr-content: var(--clr-neutral--1);
     --clr-border: var(--clr-primary);
     --border-w: 0.1rem;
+    --border-r: 0.4rem;
     --border: 0 0 0 var(--border-w) var(--clr-border);
 
     &:hover {
       --clr-bg: var(--clr-neutral--1);
       --clr-content: var(--clr-primary);
       --clr-border: var(--clr-primary);
+    }
+  }
+
+  &--link {
+    --padding: 0;
+    --clr-content: var(--clr-primary);
+
+    &:hover {
+      --clr-border: var(--clr-primary);
+      --border: 0 0.1rem 0 0 var(--clr-border);
     }
   }
 }
