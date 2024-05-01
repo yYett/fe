@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import type { FieldSetValidatorRef } from '~/layer-forms/types';
 import type { TheLogin } from '../types';
 
 const props = defineProps<{
@@ -22,17 +23,16 @@ const props = defineProps<{
 const emit = defineEmits<{
   register: [value: boolean];
   recover: [value: boolean];
-  login: [value: boolean];
+  login: [value: object];
 }>();
 
-const fieldSetValidatorRef = ref<{ validateFields(): boolean }>();
+const fieldSetValidatorRef = ref<FieldSetValidatorRef>();
 
 const handleLogin = (evt: Event) => {
   evt.preventDefault();
 
-  fieldSetValidatorRef.value?.validateFields();
-
-  // handle submit
+  const result = fieldSetValidatorRef.value?.validateFields();
+  result?.valid && emit('login', result.payload);
 };
 </script>
 

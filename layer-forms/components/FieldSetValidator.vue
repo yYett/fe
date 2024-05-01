@@ -4,8 +4,8 @@
       v-for="(item, i) in data"
       :key="i"
       :data="item"
-      v-model:field="state[i]"
-      :value="state[i]"
+      v-model:field="state[item.name]"
+      :value="state[item.name]"
       :error-msg="errors[i]"
     />
   </div>
@@ -21,20 +21,31 @@ const emit = defineEmits<{
   valid: [value: boolean];
 }>();
 
-const state = ref<string[]>(props.data.map((el) => el.value ?? ''));
+const state = ref<{ [key: string]: string }>(
+  props.data.reduce(
+    (result, { name, value = '' }) => ({
+      ...result,
+      [name]: value,
+    }),
+    {},
+  ),
+);
 const errors = ref<string[]>([]);
 
 const validateFields = () => {
-  const x = Object.values(state.value).forEach((field, key) => {
+  Object.values(state.value).forEach((field, key) => {
     const { required, type } = props.data[key];
 
     if (required || field) {
-      console.log('type');
-
       const errorType = validateInputValue(field, type);
       errors.value[key] = errorType;
     }
   });
+
+  return {
+    valid: errors.value.filter(Boolean).length === 0,
+    payload: state.value,
+  };
 };
 
 defineExpose({
