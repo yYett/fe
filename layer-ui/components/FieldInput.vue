@@ -1,18 +1,11 @@
 <template>
-  <div
-    :class="[
-      'input-field',
-      {
-        'has-error': errorMsg,
-      },
-    ]"
-  >
+  <div :class="['input-field', { 'has-error': errorMsg }]">
     <label class="f-label" :for="data.name">{{ data.label }}</label>
     <input
+      :id="data.name"
       :name="data.name"
       :type="data.type"
-      v-model="value"
-      @change="field = value"
+      @change="updateField($event)"
     />
     <p v-show="errorMsg" class="f-caption">{{ errorMsg }}</p>
   </div>
@@ -27,6 +20,10 @@ const props = defineProps<{
 
 const value = ref(props.data.value);
 const field = defineModel();
+
+const updateField = (evt: Event) => {
+  field.value = (evt.target as HTMLInputElement).value;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -40,7 +37,11 @@ const field = defineModel();
 
     p {
       --clr-text: var(--input-error-color, var(--clr-error));
-      margin-left: 1.6rem;
+
+      margin: {
+        top: 0.25rem;
+        left: 1.6rem;
+      }
     }
   }
 
