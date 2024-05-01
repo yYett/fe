@@ -1,8 +1,5 @@
-import type { FieldInput } from "~/layer-ui/types";
+import type { FieldSetValidator } from '~/layer-forms/types';
 
 export type TheLogin = {
-  fields: {
-    arg: FieldInput;
-    errorMsg: string;
-  }[];
+  fields: FieldSetValidator;
 };

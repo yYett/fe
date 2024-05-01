@@ -5,28 +5,30 @@
       :id="data.name"
       :name="data.name"
       :type="data.type"
+      :value="value"
       @change="updateField($event)"
     />
     <p v-show="errorMsg" class="f-caption">{{ errorMsg }}</p>
   </div>
 </template>
+
 <script setup lang="ts">
-import type { FieldInput } from "../types";
+import type { FieldInput } from '../types';
 
 const props = defineProps<{
   data: FieldInput;
   errorMsg?: string;
+  value: string;
 }>();
 
-const value = ref(props.data.value);
-const field = defineModel();
+const field = defineModel('field');
 
 const updateField = (evt: Event) => {
   field.value = (evt.target as HTMLInputElement).value;
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .input-field {
   position: relative;
   display: flex;
@@ -55,7 +57,7 @@ const updateField = (evt: Event) => {
 
   label {
     position: absolute;
-    top: -18%;
+    top: -1.1rem;
     left: 1rem;
     color: var(--label-color, var(--clr-neutral--0));
     background-color: var(--label-bg-color, var(--clr-neutral--1));

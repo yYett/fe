@@ -4,20 +4,16 @@
       :data="{
         fields: [
           {
-            arg: {
-              label: 'E-mail',
-              name: 'email',
-              type: 'email',
-            },
-            errorMsg: '',
+            label: 'E-mail',
+            name: 'email',
+            type: 'email',
+            required: true,
           },
           {
-            arg: {
-              label: 'Password',
-              name: 'pw',
-              type: 'password',
-            },
-            errorMsg: '',
+            label: 'Password',
+            name: 'pw',
+            type: 'password',
+            required: true,
           },
         ],
       }"

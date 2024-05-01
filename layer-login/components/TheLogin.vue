@@ -5,19 +5,15 @@
       <p class="f-subtitle">Sign in to continue</p>
     </div>
 
-    <FieldInput
-      v-for="(item, i) in data.fields"
-      :key="i"
-      :data="item.arg"
-      :error-msg="item.errorMsg"
-    />
+    <FieldSetValidator ref="fieldSetValidatorRef" :data="data.fields" />
 
     <button class="btn btn--primary" type="submit">Sign in</button>
     <p>First-time explorer? <button class="btn btn--link">Register</button></p>
   </form>
 </template>
+
 <script setup lang="ts">
-import type { TheLogin } from "../types";
+import type { TheLogin } from '../types';
 
 const props = defineProps<{
   data: TheLogin;
@@ -29,8 +25,12 @@ const emit = defineEmits<{
   login: [value: boolean];
 }>();
 
+const fieldSetValidatorRef = ref<{ validateFields(): boolean }>();
+
 const handleLogin = (evt: Event) => {
   evt.preventDefault();
+
+  fieldSetValidatorRef.value?.validateFields();
 
   // handle submit
 };
