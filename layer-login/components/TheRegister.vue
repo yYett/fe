@@ -1,14 +1,14 @@
 <template>
   <form class="the-login" novalidate @submit="handleLogin">
     <div class="header">
-      <h2 class="f-headline">Welcome</h2>
-      <p class="f-subtitle">Sign in to continue</p>
+      <h2 class="f-headline">Register</h2>
+      <p class="f-subtitle">Sign up to continue</p>
     </div>
 
     <FieldSetValidator ref="fieldSetValidatorRef" :data="data.fields" />
 
-    <button class="btn btn--primary" type="submit">Sign in</button>
-    <p>First-time explorer? <button class="btn btn--link">Register</button></p>
+    <button class="btn btn--primary" type="submit">Sign up</button>
+    <p>Been here before? <button class="btn btn--link">Login</button></p>
   </form>
 </template>
 
@@ -32,7 +32,7 @@ const handleLogin = (evt: Event) => {
   evt.preventDefault();
 
   const result = fieldSetValidatorRef.value?.validateFields();
-  result?.valid && emit('login', result.payload);
+  result?.valid && emit('register', result.payload);
 };
 </script>
 

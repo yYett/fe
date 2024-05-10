@@ -4,6 +4,7 @@ export type FieldInput = {
   label: string;
   required?: boolean;
   value?: string;
+  match?: string;
 };
 
 export type FieldSetValidator = FieldInput[];

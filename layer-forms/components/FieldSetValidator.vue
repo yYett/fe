@@ -34,11 +34,15 @@ const errors = ref<string[]>([]);
 
 const validateFields = () => {
   Object.values(state.value).forEach((field, key) => {
-    const { required, type } = props.data[key];
+    const { required, type, match } = props.data[key];
 
     if (required || field) {
       const errorType = validateInputValue(field, type);
       errors.value[key] = errorType;
+
+      if (match && !errorType) {
+        if (field !== state.value[match]) errors.value[key] = 'mismatch';
+      }
     }
   });
 
