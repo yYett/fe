@@ -1,43 +1,43 @@
 <template>
-  <form class="the-login" novalidate @submit="handleLogin">
+  <form class="auth-form" novalidate @submit="handleForm">
     <div class="header">
-      <h2 class="f-headline">Register</h2>
-      <p class="f-subtitle">Sign up to continue</p>
+      <h2 class="f-headline">{{ data.title }}</h2>
+      <p class="f-subtitle">{{ data.subtitle }}</p>
     </div>
 
     <FieldSetValidator ref="fieldSetValidatorRef" :data="data.fields" />
 
-    <button class="btn btn--primary" type="submit">Sign up</button>
-    <p>Been here before? <button class="btn btn--link">Login</button></p>
+    <button class="btn btn--primary" type="submit">
+      {{ data.label.submit }}
+    </button>
+    <slot></slot>
   </form>
 </template>
 
 <script setup lang="ts">
 import type { FieldSetValidatorRef } from '~/layer-forms/types';
-import type { TheLogin } from '../types';
+import type { AuthForm } from '../types';
 
-const props = defineProps<{
-  data: TheLogin;
+defineProps<{
+  data: AuthForm;
 }>();
 
 const emit = defineEmits<{
-  register: [value: object];
-  recover: [value: boolean];
-  login: [value: object];
+  'handle-auth': [value: object];
 }>();
 
 const fieldSetValidatorRef = ref<FieldSetValidatorRef>();
 
-const handleLogin = (evt: Event) => {
+const handleForm = (evt: Event) => {
   evt.preventDefault();
 
   const result = fieldSetValidatorRef.value?.validateFields();
-  result?.valid && emit('register', result.payload);
+  result?.valid && emit('handle-auth', result.payload);
 };
 </script>
 
 <style lang="scss" scoped>
-.the-login {
+.auth-form {
   padding: 2.4rem;
   display: grid;
   gap: 2.4rem;
