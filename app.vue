@@ -2,23 +2,36 @@
   <TheCube :face="face">
     <template #front>
       <AuthForm :data="login">
-        <p>
-          First-time explorer?
-          <button class="btn btn--link" type="button" @click="face = 'right'">
-            Register
-          </button>
-        </p>
+        <DescriptiveLink
+          text=" First-time explorer?"
+          label="Register"
+          @clicked="face = 'right'"
+        />
+        <DescriptiveLink
+          text="Lost the way?"
+          label="Recover password"
+          @clicked="face = 'left'"
+        />
       </AuthForm>
     </template>
 
     <template #right>
       <AuthForm :data="register">
-        <p>
-          Been here before?
-          <button class="btn btn--link" type="button" @click="face = 'front'">
-            Login
-          </button>
-        </p>
+        <DescriptiveLink
+          text=" Been here before?"
+          label="Login"
+          @clicked="face = 'front'"
+        />
+      </AuthForm>
+    </template>
+
+    <template #left>
+      <AuthForm :data="recoverPw">
+        <DescriptiveLink
+          text="Here is the way to login &#8594;"
+          label="Login"
+          @clicked="face = 'front'"
+        />
       </AuthForm>
     </template>
   </TheCube>
@@ -63,6 +76,29 @@ const register: AuthForm = {
       type: 'email',
       required: true,
     },
+    {
+      label: 'Password',
+      name: 'pw',
+      type: 'password',
+      required: true,
+    },
+    {
+      label: 'Repeat password',
+      name: 'pw-r',
+      type: 'password',
+      required: true,
+      match: 'pw',
+    },
+  ],
+};
+
+const recoverPw: AuthForm = {
+  title: 'Recover password',
+  subtitle: 'Get back on track',
+  label: {
+    submit: 'Submit',
+  },
+  fields: [
     {
       label: 'Password',
       name: 'pw',
