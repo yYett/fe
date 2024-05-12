@@ -18,10 +18,10 @@ const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
 
 <style scoped lang="scss">
 .the-cube {
-  --cube--w: 50rem;
-  --cube--h: 50rem;
+  --cube--w: 55rem;
+  --cube--h: 55rem;
+  --cube-z: -28rem;
   --cube-depth: var(--cube--w);
-  --cube-z: -25rem;
   --spacing: 2rem;
 
   width: var(--cube--w);
@@ -53,13 +53,14 @@ const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
 }
 
 .face {
-  border: 1px solid red;
-
   position: absolute;
   width: var(--cube--w);
   height: var(--cube--h);
   padding: var(--spacing);
 
+  background-color: var(--clr-neutral--1);
+  box-shadow: #64646f33 0 0.7rem 2.9rem 0;
+  
   &--front {
     transform: rotateY(0deg) translateZ(calc(var(--cube--w) / 2));
   }
