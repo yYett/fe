@@ -38,8 +38,9 @@
 </template>
 <script setup lang="ts">
 import type { AuthForm } from './layer-login/types';
+import type { TheCubeFaces } from './layer-ui/types';
 
-const face = ref<string>('front');
+const face = ref<TheCubeFaces>('front');
 
 const login: AuthForm = {
   title: 'Welcome',

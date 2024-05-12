@@ -9,8 +9,10 @@
 </template>
 
 <script setup lang="ts">
+import type { TheCubeFaces } from '../types';
+
 defineProps<{
-  face?: 'front' | 'right' | 'back' | 'left' | 'top' | 'bottom';
+  face?: TheCubeFaces;
 }>();
 
 const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
@@ -60,7 +62,7 @@ const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
 
   background-color: var(--clr-neutral--1);
   box-shadow: #64646f33 0 0.7rem 2.9rem 0;
-  
+
   &--front {
     transform: rotateY(0deg) translateZ(calc(var(--cube--w) / 2));
   }
