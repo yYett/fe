@@ -53,12 +53,5 @@ const handleForm = (evt: Event) => {
   .btn {
     margin-top: 0.8rem;
   }
-
-  & > :last-child {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.5rem;
-  }
 }
 </style>
