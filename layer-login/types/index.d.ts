@@ -8,3 +8,10 @@ export type AuthForm = {
     submit: string;
   };
 };
+
+export type AuthBlockFace = {
+  face: TheCubeFaces;
+  type: 'login' | 'register' | 'recoverPw';
+  data: AuthForm;
+  links: { text: string; label: string; to: TheCubeFaces }[];
+};

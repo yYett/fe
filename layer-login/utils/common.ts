@@ -1,4 +1,5 @@
-import type { AuthForm } from "../types";
+import type { TheCubeFaces } from '~/layer-ui/types';
+import type { AuthBlockFace, AuthForm } from '../types';
 
 export const loginPayload: AuthForm = {
   title: 'Welcome',
@@ -73,3 +74,47 @@ export const recoverPasswordPayload: AuthForm = {
     },
   ],
 };
+
+export const authBlockPayload: AuthBlockFace[] = [
+  {
+    face: 'front',
+    type: 'login',
+    data: loginPayload,
+    links: [
+      {
+        text: 'First-time explorer?',
+        label: 'Register',
+        to: 'right',
+      },
+      {
+        text: 'Lost the way?',
+        label: 'Recover password',
+        to: 'left',
+      },
+    ],
+  },
+  {
+    face: 'right',
+    type: 'register',
+    data: registerPayload,
+    links: [
+      {
+        text: 'Been here before?',
+        label: 'Login',
+        to: 'front',
+      },
+    ],
+  },
+  {
+    face: 'left',
+    type: 'recoverPw',
+    data: recoverPasswordPayload,
+    links: [
+      {
+        text: 'Here is the way to login &#8594;',
+        label: 'Login',
+        to: 'front',
+      },
+    ],
+  },
+];

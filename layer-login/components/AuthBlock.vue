@@ -1,37 +1,18 @@
 <template>
   <div class="auth-block">
     <TheCube :face="face">
-      <template #front>
-        <AuthForm :data="loginPayload">
+      <template
+        v-for="(item, i) in authBlockPayload"
+        :key="i"
+        v-slot:[item.face]
+      >
+        <AuthForm :data="item.data" @handle-submit="submit($event, item.type)">
           <DescriptiveLink
-            text=" First-time explorer?"
-            label="Register"
-            @clicked="face = 'right'"
-          />
-          <DescriptiveLink
-            text="Lost the way?"
-            label="Recover password"
-            @clicked="face = 'left'"
-          />
-        </AuthForm>
-      </template>
-
-      <template #right>
-        <AuthForm :data="registerPayload">
-          <DescriptiveLink
-            text=" Been here before?"
-            label="Login"
-            @clicked="face = 'front'"
-          />
-        </AuthForm>
-      </template>
-
-      <template #left>
-        <AuthForm :data="recoverPasswordPayload">
-          <DescriptiveLink
-            text="Here is the way to login &#8594;"
-            label="Login"
-            @clicked="face = 'front'"
+            v-for="(link, j) in item.links"
+            :key="j"
+            :text="link.text"
+            :label="link.label"
+            @clicked="face = link.to"
           />
         </AuthForm>
       </template>
@@ -40,8 +21,23 @@
 </template>
 <script setup lang="ts">
 import type { TheCubeFaces } from '~/layer-ui/types';
+import type { AuthBlockFace, AuthForm } from '../types';
 
 const face = ref<TheCubeFaces>('front');
+
+const submit = (payload: object, type: AuthBlockFace['type']) => {
+  switch (type) {
+    case 'login':
+      console.log('login', payload);
+      break;
+    case 'register':
+      console.log('register', payload);
+      break;
+    case 'recoverPw':
+      console.log('recoverPw', payload);
+      break;
+  }
+};
 </script>
 
 <style scoped lang="scss">

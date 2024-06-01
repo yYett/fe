@@ -23,7 +23,7 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  'handle-auth': [value: object];
+  'handle-submit': [value: object];
 }>();
 
 const fieldSetValidatorRef = ref<FieldSetValidatorRef>();
@@ -32,7 +32,7 @@ const handleForm = (evt: Event) => {
   evt.preventDefault();
 
   const result = fieldSetValidatorRef.value?.validateFields();
-  result?.valid && emit('handle-auth', result.payload);
+  result?.valid && emit('handle-submit', result.payload);
 };
 </script>
 
