@@ -20,11 +20,11 @@ const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
 
 <style scoped lang="scss">
 .the-cube {
-  --cube--w: 55rem;
-  --cube--h: 55rem;
-  --cube-z: -28rem;
+  --cube--w: 52rem;
+  --cube--h: 52rem;
+  --cube-z: -25rem;
   --cube-depth: var(--cube--w);
-  --spacing: 2rem;
+  --spacing: 3.2rem;
 
   width: var(--cube--w);
   height: var(--cube--h);

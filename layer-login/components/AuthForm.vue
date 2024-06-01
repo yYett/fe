@@ -38,7 +38,6 @@ const handleForm = (evt: Event) => {
 
 <style lang="scss" scoped>
 .auth-form {
-  padding: 2.4rem;
   display: grid;
   gap: 2.4rem;
 
