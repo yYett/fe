@@ -23,8 +23,8 @@ const faces = ['front', 'right', 'back', 'left', 'top', 'bottom'];
   --cube--w: 52rem;
   --cube--h: 52rem;
   --cube-z: -25rem;
-  --cube-depth: var(--cube--w);
   --spacing: 3.2rem;
+  --cube-depth: var(--cube--w);
 
   width: var(--cube--w);
   height: var(--cube--h);

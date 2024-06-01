@@ -51,6 +51,10 @@ const face = ref<TheCubeFaces>('front');
   display: flex;
 
   & > * {
+    --cube--w: #{fluid-type(32rem, 52rem, $max-vw: 76.6rem)};
+    --cube--h: #{fluid-type(55rem, 52rem, $max-vw: 76.6rem)};
+    --cube-z: #{fluid-type(-16rem, -25rem, $max-vw: 76.6rem)};
+
     margin: auto;
   }
 }

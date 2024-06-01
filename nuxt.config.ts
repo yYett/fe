@@ -7,5 +7,19 @@ export default defineNuxtConfig({
     global: true,
     dirs: ['~/components'],
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/abstracts/index.scss" as *;',
+        },
+      },
+    },
+  },
   css: ['~/assets/scss/base/index.scss'],
+  runtimeConfig: {
+    public: {
+      API: process.env.API,
+    },
+  },
 });
