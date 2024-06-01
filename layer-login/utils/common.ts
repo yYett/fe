@@ -111,7 +111,7 @@ export const authBlockPayload: AuthBlockFace[] = [
     data: recoverPasswordPayload,
     links: [
       {
-        text: 'Here is the way to login &#8594;',
+        text: 'Here is the way to login →',
         label: 'Login',
         to: 'front',
       },
