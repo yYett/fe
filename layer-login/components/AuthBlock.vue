@@ -26,13 +26,13 @@ import type { AuthBlockFace, AuthForm } from '../types';
 
 const face = ref<TheCubeFaces>('front');
 
-const submit = (payload: object, type: AuthBlockFace['type']) => {
+const submit = async (payload: object, type: AuthBlockFace['type']) => {
   switch (type) {
     case 'login':
-      console.log('login', payload);
+      await dispatchLogin(payload);
       break;
     case 'register':
-      console.log('register', payload);
+      await dispatchRegistry(payload);
       break;
     case 'recoverPw':
       console.log('recoverPw', payload);
