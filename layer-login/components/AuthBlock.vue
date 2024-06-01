@@ -14,6 +14,7 @@
             :label="link.label"
             @clicked="face = link.to"
           />
+          <IconBrand class="icon" />
         </AuthForm>
       </template>
     </TheCube>
@@ -42,6 +43,7 @@ const submit = (payload: object, type: AuthBlockFace['type']) => {
 
 <style scoped lang="scss">
 .auth-block {
+  position: relative;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -52,6 +54,17 @@ const submit = (payload: object, type: AuthBlockFace['type']) => {
     --cube-z: #{fluid-type(-16rem, -25rem, $max-vw: 76.6rem)};
 
     margin: auto;
+  }
+
+  .icon {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    padding: 15%;
+    opacity: 0.05;
+    z-index: -1;
+    color: var(--clr-primary);
   }
 }
 </style>
